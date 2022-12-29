@@ -1,0 +1,47 @@
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+class NumberUtilsTest {
+
+    @Test
+    void exampleTests() {
+        assertTrue(NumberUtils.isNarcissistic(153), "153 is narcissistic");
+        assertTrue(NumberUtils.isNarcissistic(1634), "1634 is narcissistic");
+        assertFalse(NumberUtils.isNarcissistic(112), "112 is not narcissistic");
+    }
+
+}
+
+public class NumberUtils {
+
+  static int countDig(int num){ // This function is used to count the amount of digits
+    if (num==0){                // in one int which will be used with the power
+      return 0;
+    }
+    return 1 + countDig(num/10);
+    
+  }
+  
+  
+    public static boolean isNarcissistic(int number) {
+      
+      int ans = 0;
+      int count = countDig(number); // number used to raise the power
+      int temp = number;
+      
+      while (temp > 0){
+        
+        ans += Math.pow(temp%10,count); //Take the power of each digit and add to the solution
+        temp = temp/10; // decrease the number by one digit each iteration
+        }
+      
+      if (ans == number){ // return true if the number submitted equals the number calculated
+        return true;
+      }
+        
+        return false;
+    }
+
+}
