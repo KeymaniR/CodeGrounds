@@ -1,0 +1,24 @@
+public class Solution {
+    public static String findTheNumberPlate(int customerID) {
+      String out = "";
+      char[] letters = {
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+      
+      int n = ((customerID % 999) + 1);   //Gets the 3 numbers at the end
+      int l1 = customerID / 999;          //Calculates first letter
+      int l2 = (int)Math.ceil((l1) / 26); //Calculates second letter based on carry over
+      int l3 = (int)Math.ceil((l2) / 26); //Calculates third letter based on carry over
+      
+      //Finds array index for each letter
+      l1 %= 26;
+      l2 %= 26;
+      l3 %= 26;
+      
+      //Creates output string
+      out = String.valueOf(letters[l1]) + String.valueOf(letters[l2]) + String.valueOf(letters[l3])
+          + String.format("%03d", n);
+      
+      return out;
+    }
+}
