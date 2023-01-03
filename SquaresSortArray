@@ -1,0 +1,53 @@
+class Main {
+
+
+public static void main(String[] args){
+
+int [] nums = new int[]{-4,-1,0,3,10};
+
+sortedSquares(nums);
+
+for(int i = 0; i < nums.length; i++){
+    
+    System.out.println(nums[i]);
+    
+}
+
+}
+    static int[] sortedSquares(int[] nums) {
+        
+        squares(nums);
+      sortArray(nums);
+      
+      return nums;
+      
+    }
+    
+    
+     static int[] squares(int[] nums) {
+        
+        for(int i = 0; i < nums.length; i++){
+            
+            nums[i] = nums[i] * nums[i];
+    
+        }
+        return nums;
+    }
+    
+    
+    static int[] sortArray(int[] arr){
+        
+        
+       for (int i = 0; i < arr.length; i++) {
+        for (int j = i + 1; j < arr.length; j++) {
+            int tmp = 0;
+            if (arr[i] > arr[j]) {
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+        return arr;
+    }
+}
